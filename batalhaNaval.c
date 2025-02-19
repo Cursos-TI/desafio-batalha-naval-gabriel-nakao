@@ -1,10 +1,58 @@
 #include <stdio.h>
 
-// Desafio Batalha Naval - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
-// Siga os comentários para implementar cada parte do desafio.
+int coord1N1, coord2N1, coord1N2, coord2N2;
+//Declaração Tabuleiros
+int tabuleiroN [10][10]; // Declaração tabuleiro novato
+int tabuleiroA [10][10]; // Declaração tabuleiro Aventureiro
+int tabuleiroM [10][10]; // Declaração tabuleiro Mestre
+
+//Função Inicialização de Tabuleiros
+void inicializaTabuleiro(int tabuleiro[10][10]){ 
+        for (int i=0; i<=9; i++){
+            for(int j=0; j<=9; j++){
+                tabuleiro[i][j]=0;
+            }
+        }
+}
+
+//Função Impressão de Tabuleiros
+void imprimeTabuleiro(int tabuleiro[10][10]){ 
+    for (int i=0; i<=9; i++){
+        printf("\n");
+        for(int j=0; j<=9; j++){
+            printf("%d ",tabuleiro[i][j]);
+        }
+    }
+}
+
+void verificaIgual(int C1N1, int C2N1, int C1N2, int C2N2){
+    if (C1N1 == C1N2 || C2N1 == C2N2){
+        printf("Navio Colidindo com anterior");
+    }
+}
+
+void verifica(int coord){
+    if (coord<0 || coord<9){
+        printf("Digite um valor válido [0 a 9]: \n");
+    }
+}
 
 int main() {
+    inicializaTabuleiro(tabuleiroN);
+    //Coordenadas navio 1
+    printf("digite coordenada Y inicial do navio 1 [Min = 0, Max= 9]:\n");
+    scanf(" %d", coord1N1);
+    printf("digite coordenada X inicial do navio 1 [Min = 0, Max= 9]:\n");
+    scanf(" %d", coord2N1);
+
+    //Coordenadas navio 2
+    printf("digite coordenada Y inicial do navio 2 [Min = 0, Max= 9]:\n");
+    scanf(" %d", coord1N2);
+    printf("digite coordenada X inicial do navio 2 [Min = 0, Max= 9]:\n");
+    scanf(" %d", coord2N2);
+
+    imprimeTabuleiro(tabuleiroN);
+    printf("\n");
     // Nível Novato - Posicionamento dos Navios
     // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
