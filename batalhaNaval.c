@@ -6,6 +6,10 @@ int tabuleiroN [10][10]; // Declaração tabuleiro novato
 int tabuleiroA [10][10]; // Declaração tabuleiro Aventureiro
 int tabuleiroM [10][10]; // Declaração tabuleiro Mestre
 
+//Navio
+int navioY [3];
+int navioX [3];
+
 //Função Inicialização de Tabuleiros
 void inicializaTabuleiro(int tabuleiro[10][10]){ 
         for (int i=0; i<=9; i++){
@@ -40,8 +44,14 @@ void verifica(int coord){
 int main() {
     inicializaTabuleiro(tabuleiroN);
     //Coordenadas navio 1
-    printf("digite coordenada Y inicial do navio 1 [Min = 0, Max= 9]:\n");
-    scanf(" %d", coord1N1);
+    do{
+        printf("digite coordenada Y inicial do navio 1 [Min = 0, Max= 9]:\n");
+        scanf(" %d", coord1N1);
+        for(int c=coord1N1; c<=(coord1N1+3); c++){
+            navioY[]=c;
+        }
+    }
+    while(coord1N1<0 || coord1N1>9);
     printf("digite coordenada X inicial do navio 1 [Min = 0, Max= 9]:\n");
     scanf(" %d", coord2N1);
 
