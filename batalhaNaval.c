@@ -1,14 +1,25 @@
 #include <stdio.h>
 
-int coord1N1, coord2N1, coord1N2, coord2N2;
+
 //Declaração Tabuleiros
-int tabuleiroN [10][10]; // Declaração tabuleiro novato
-int tabuleiroA [10][10]; // Declaração tabuleiro Aventureiro
-int tabuleiroM [10][10]; // Declaração tabuleiro Mestre
+int tabuleiro [10][10]; // Declaração tabuleiro novato
 
 //Navio
-int navioY [3];
-int navioX [3];
+void NavioVertical(int tabuleiro[10][10], int coord1, int coord2){
+
+
+for (int c=0; c<=2; c++){;
+tabuleiro [coord1+c] [coord2] = 3;
+}
+}
+
+//Navio
+void NavioHorizontal(int tabuleiro[10][10], int coord1, int coord2){
+    
+    for (int c=0; c<=2; c++){
+    tabuleiro [coord1] [coord2+c] = 3;
+    }
+}
 
 //Função Inicialização de Tabuleiros
 void inicializaTabuleiro(int tabuleiro[10][10]){ 
@@ -29,39 +40,41 @@ void imprimeTabuleiro(int tabuleiro[10][10]){
     }
 }
 
-void verificaIgual(int C1N1, int C2N1, int C1N2, int C2N2){
-    if (C1N1 == C1N2 || C2N1 == C2N2){
-        printf("Navio Colidindo com anterior");
-    }
-}
-
 void verifica(int coord){
     if (coord<0 || coord<9){
         printf("Digite um valor válido [0 a 9]: \n");
     }
 }
 
+//pergunta ao usuario a coordenadas
+void perguntaCoord(int* coordX, int* coordY) {
+    printf("digite coordenada X inicial do navio [Min = 0, Max = 9]:\n");
+    scanf("%d", coordX);
+    verifica(*coordX);
+    printf("digite coordenada Y inicial do navio [Min = 0, Max = 9]:\n");
+    scanf("%d", coordY);
+    verifica(*coordY);
+}
+
+void verificaIgual(int tabuleiro [10][10], int coordX, int coordY){
+    if (tabuleiro[coordX][coordY] == 3);
+    printf("Navios colidindo, favor digitar novamente\n");
+}
+
+
+
 int main() {
-    inicializaTabuleiro(tabuleiroN);
-    //Coordenadas navio 1
-    do{
-        printf("digite coordenada Y inicial do navio 1 [Min = 0, Max= 9]:\n");
-        scanf(" %d", coord1N1);
-        for(int c=coord1N1; c<=(coord1N1+3); c++){
-            navioY[]=c;
-        }
-    }
-    while(coord1N1<0 || coord1N1>9);
-    printf("digite coordenada X inicial do navio 1 [Min = 0, Max= 9]:\n");
-    scanf(" %d", coord2N1);
+    inicializaTabuleiro(tabuleiro);
+    int coordX, coordY;
+    perguntaCoord(&coordX, &coordY);
+    NavioVertical(tabuleiro, coordX, coordY);
 
-    //Coordenadas navio 2
-    printf("digite coordenada Y inicial do navio 2 [Min = 0, Max= 9]:\n");
-    scanf(" %d", coord1N2);
-    printf("digite coordenada X inicial do navio 2 [Min = 0, Max= 9]:\n");
-    scanf(" %d", coord2N2);
+    perguntaCoord(&coordX, &coordY);
+    NavioHorizontal(tabuleiro, coordX, coordY);
+    verificaIgual(tabuleiro, coordX, coordY);
+    
 
-    imprimeTabuleiro(tabuleiroN);
+    imprimeTabuleiro(tabuleiro);
     printf("\n");
     // Nível Novato - Posicionamento dos Navios
     // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
