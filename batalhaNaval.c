@@ -2,9 +2,11 @@
 
 
 //Declaração Tabuleiros
-int tabuleiro [10][10]; // Declaração tabuleiro novato
+int tabuleiro [10][10]; // Declaração tabuleiro 
 
-//Navio
+int coordX, coordY;
+
+//Navio Vertical
 void NavioVertical(int tabuleiro[10][10], int coord1, int coord2){
 
 
@@ -13,7 +15,7 @@ tabuleiro [coord1+c] [coord2] = 3;
 }
 }
 
-//Navio
+//Navio Horizontal
 void NavioHorizontal(int tabuleiro[10][10], int coord1, int coord2){
     
     for (int c=0; c<=2; c++){
@@ -40,20 +42,20 @@ void imprimeTabuleiro(int tabuleiro[10][10]){
     }
 }
 
-void verifica(int coord){
-    if (coord<0 || coord<9){
-        printf("Digite um valor válido [0 a 9]: \n");
-    }
-}
-
 //pergunta ao usuario a coordenadas
 void perguntaCoord(int* coordX, int* coordY) {
     printf("digite coordenada X inicial do navio [Min = 0, Max = 9]:\n");
     scanf("%d", coordX);
-    verifica(*coordX);
+    while (*coordX <0 || *coordX >9){
+        printf("Digite um valor válido [0 a 9]: \n");
+        scanf("%d", coordX);
+    }
     printf("digite coordenada Y inicial do navio [Min = 0, Max = 9]:\n");
     scanf("%d", coordY);
-    verifica(*coordY);
+    while (*coordY<0 || *coordY>9){
+        printf("Digite um valor válido [0 a 9]: \n");
+        scanf("%d", coordY);
+    }
 }
 
 void verificaIgual(int tabuleiro [10][10], int coordX, int coordY){
@@ -64,8 +66,9 @@ void verificaIgual(int tabuleiro [10][10], int coordX, int coordY){
 
 
 int main() {
+
+    //NOVATO
     inicializaTabuleiro(tabuleiro);
-    int coordX, coordY;
     perguntaCoord(&coordX, &coordY);
     NavioVertical(tabuleiro, coordX, coordY);
 
@@ -76,10 +79,8 @@ int main() {
 
     imprimeTabuleiro(tabuleiro);
     printf("\n");
-    // Nível Novato - Posicionamento dos Navios
-    // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
-    // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
-    // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
+    //FIM NOVATO
+
 
     // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
     // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
