@@ -93,72 +93,106 @@ void cone(int tabuleiro[10][10],int coord1, int coord2){
     }
 }
 
+void octaedro(int tabuleiro[10][10],int coord1, int coord2){
+    for (int i=0; i<=2; i++){; //
+        for (int j=0; j<=4; j++){
+        if(j==2){
+            tabuleiro [coord1+i] [coord2+j] = 1;
+        }
+        else{
+            tabuleiro [coord1+i] [coord2+j] = 0;
+        }
+        if (i==1 && j!=0 && j!=4){
+            tabuleiro [coord1+i] [coord2+j] = 1;
+        }
+        else if(j==0 || j==4){
+            tabuleiro [coord1+i] [coord2+j] = 0;
+        }
+        if (i==2 && j!=2){
+            tabuleiro [coord1+i] [coord2+j] = 0;
+        }
+        }   
+    }
+}
+
+void cruz(int tabuleiro[10][10],int coord1, int coord2){
+    for (int i=0; i<=2; i++){; //
+        for (int j=0; j<=4; j++){
+        if(j==2){
+            tabuleiro [coord1+i] [coord2+j] = 1;
+        }
+        else{
+            tabuleiro [coord1+i] [coord2+j] = 0;
+        }
+        if (i==1){
+            tabuleiro [coord1+i] [coord2+j] = 1;
+        }
+        if (i==2 && j!=2){
+            tabuleiro [coord1+i] [coord2+j] = 0;
+        }
+        }   
+    }
+}
 
 
 int main() {
 
-    // //NOVATO
-    // inicializaTabuleiro(tabuleiro);
-    // perguntaCoord(&coordX, &coordY);
-    // NavioVertical(tabuleiro, coordX, coordY);
+    //NOVATO
+    inicializaTabuleiro(tabuleiro);
+    perguntaCoord(&coordX, &coordY);
+    NavioVertical(tabuleiro, coordX, coordY);
 
-    // perguntaCoord(&coordX, &coordY);
-    // NavioHorizontal(tabuleiro, coordX, coordY);
+    perguntaCoord(&coordX, &coordY);
+    NavioHorizontal(tabuleiro, coordX, coordY);
 
-    // imprimeTabuleiro(tabuleiro);
-    // printf("\n");
-    // //FIM NOVATO
+    imprimeTabuleiro(tabuleiro);
+    printf("\n");
+    //FIM NOVATO
 
 
-    // // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // inicializaTabuleiro(tabuleiro);
-    // coordX= 0;
-    // coordY= 0;
-    // NavioVertical(tabuleiro, coordX, coordY);
+    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
+    inicializaTabuleiro(tabuleiro);
+    coordX= 0;
+    coordY= 0;
+    NavioVertical(tabuleiro, coordX, coordY);
 
-    // coordX= 0;
-    // coordY= 3;
-    // NavioHorizontal(tabuleiro, coordX, coordY);
+    coordX= 0;
+    coordY= 3;
+    NavioHorizontal(tabuleiro, coordX, coordY);
 
-    // coordX= 5;
-    // coordY= 6;
-    // NavioDiagonal1(tabuleiro, coordX, coordY);
+    coordX= 5;
+    coordY= 6;
+    NavioDiagonal1(tabuleiro, coordX, coordY);
     
-    // coordX= 7;
-    // coordY= 2;
-    // NavioDiagonal1(tabuleiro, coordX, coordY);
+    coordX= 7;
+    coordY= 2;
+    NavioDiagonal1(tabuleiro, coordX, coordY);
 
-    // imprimeTabuleiro(tabuleiro);
-    // printf("\n");
+    imprimeTabuleiro(tabuleiro);
+    printf("\n");
+    //FIM AVENTUREIRO
 
+    //INICIO MESTRE
     inicializaTabuleiro(tabuleiro);
     coordX= 3;
     coordY= 4;
     cone(tabuleiro, coordX, coordY);
     imprimeTabuleiro(tabuleiro);
+    printf("\n");
 
-    // Nível Mestre - Habilidades Especiais com Matrizes
-    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
+    inicializaTabuleiro(tabuleiro);
+    coordX= 3;
+    coordY= 4;
+    octaedro(tabuleiro, coordX, coordY);
+    imprimeTabuleiro(tabuleiro);
+    printf("\n");
 
-
-   
-    // Exemplos de exibição das habilidades:
-    // Exemplo para habilidade em cone:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 1 1 1 1 1
-    
-    // Exemplo para habilidade em octaedro:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 0 0 1 0 0
-
-    // Exemplo para habilidade em cruz:
-    // 0 0 1 0 0
-    // 1 1 1 1 1
-    // 0 0 1 0 0
-
+    inicializaTabuleiro(tabuleiro);
+    coordX= 3;
+    coordY= 4;
+    cruz(tabuleiro, coordX, coordY);
+    imprimeTabuleiro(tabuleiro);
+    printf("\n");
+    //FIM MESTRE
     return 0;
 }
